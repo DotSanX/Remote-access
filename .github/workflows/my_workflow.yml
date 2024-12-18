@@ -1,0 +1,19 @@
+name: Example Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Print secret value
+        env:
+          MY_SECRET: ${{ secrets.BOT_TOKEN }} # Используем вашу переменную окружения
+        run: echo "The secret is $MY_SECRET"
